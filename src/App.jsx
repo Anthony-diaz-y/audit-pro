@@ -10,7 +10,7 @@ import WhatsAppButton from "./components/ui/whatssapButton";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Header />
       {/* Se quita el padding de aquí para que el contenido fluya por debajo */}
       <main className="flex-grow">

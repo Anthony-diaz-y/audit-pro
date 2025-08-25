@@ -1,3 +1,5 @@
+import Aos from "aos";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Placeholder icons
@@ -43,21 +45,29 @@ const teamMembers = [
     name: "Nombre del Socio Principal",
     title: "Socio Director y Fundador",
     imageUrl:
-      "https://www.unir.net/wp-content/uploads/2024/08/Auditoria-fiscal-caracteristicas-e-importancia1.jpg", // Placeholder image
+      "https://www.unir.net/wp-content/uploads/2024/08/Auditoria-fiscal-caracteristicas-e-importancia1.jpg",
   },
   {
     name: "Nombre del Gerente",
     title: "Gerente de Auditoría",
-    imageUrl: "https://via.placeholder.com/200",
+    imageUrl:
+      "https://www.tuproyectodevida.pe/wp-content/uploads/2023/01/contador-gerencia-general-1200x628.jpg",
   },
   {
     name: "Nombre del Especialista",
     title: "Especialista Fiscal",
-    imageUrl: "https://via.placeholder.com/200",
+    imageUrl:
+      "https://www.auditool.org/joomlatools-files/docman-images//2%20INF%20(1).jpg",
   },
 ];
 
 export default function Nosotros() {
+  useEffect(() => {
+    Aos.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
   return (
     <>
       {/* Hero Section */}
@@ -83,7 +93,7 @@ export default function Nosotros() {
       <section className="bg-white py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="text-center p-6">
+            <div className="text-center p-6" data-aos="fade-right">
               <MissionIcon />
               <h2 className="text-3xl font-bold text-gray-800 mb-3">
                 Nuestra Misión
@@ -95,7 +105,11 @@ export default function Nosotros() {
                 financiera y ayudar a nuestros clientes a alcanzar sus metas.
               </p>
             </div>
-            <div className="text-center p-6">
+            <div
+              className="text-center p-6"
+              data-aos="fade-left"
+              data-aos-delay="100"
+            >
               <VisionIcon />
               <h2 className="text-3xl font-bold text-gray-800 mb-3">
                 Nuestra Visión
@@ -114,7 +128,7 @@ export default function Nosotros() {
       {/* Team Section */}
       <section className="bg-gray-50 py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
               Nuestro Equipo
             </h2>
@@ -124,7 +138,12 @@ export default function Nosotros() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="text-center">
+              <div
+                key={index}
+                className="text-center"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
                 <img
                   src={member.imageUrl}
                   alt={`Foto de ${member.name}`}

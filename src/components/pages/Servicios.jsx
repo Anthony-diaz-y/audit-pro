@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react"; 
+import AOS from "aos"; 
+import "aos/dist/aos.css"; 
 
 const ServiceIcon = () => (
   <svg
-    className="w-10 h-10 text-teal-700 mb-4"
+    className="w-10 h-10 text-teal-700 mb-4 mx-auto"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
@@ -15,6 +18,7 @@ const ServiceIcon = () => (
     />
   </svg>
 );
+
 const servicesData = [
   {
     title: "Auditoría de Estados Financieros",
@@ -49,6 +53,14 @@ const servicesData = [
 ];
 
 export default function Servicios() {
+  // Inicializa AOS al cargar el componente
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true, // La animación ocurre solo una vez por elemento
+    });
+  }, []);
+
   return (
     <>
       <section className="relative h-[60vh] bg-gray-800 flex items-center justify-center text-center">
@@ -60,7 +72,7 @@ export default function Servicios() {
           />
         </div>
         <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative z-10 container mx-auto px-4 text-white">
+        <div className="relative z-10 container mx-auto px-4 text-white pt-24">
           <h1 className="text-4xl md:text-6xl font-bold">Nuestros Servicios</h1>
           <p className="text-lg md:text-xl mt-4 max-w-3xl mx-auto">
             Soluciones integrales de auditoría y consultoría diseñadas para
@@ -75,7 +87,9 @@ export default function Servicios() {
             {servicesData.map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300"
+                className="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 text-center"
+                data-aos="fade-up"
+                data-aos-delay={index * 100} // Retraso escalonado
               >
                 <ServiceIcon />
                 <h3 className="text-xl font-bold text-gray-800 mb-3">

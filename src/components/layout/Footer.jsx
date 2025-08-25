@@ -1,19 +1,66 @@
 import { Link } from "react-router-dom";
 
-// Helper component for social media links to keep the main component cleaner
-const SocialLink = ({ href, label, children }) => {
-  const isExternalPage = href.startsWith("http");
+// --- Iconos para la sección de Contacto ---
+const LocationIcon = () => (
+  <svg
+    className="w-5 h-5 mr-3 text-slate-400"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+    />
+  </svg>
+);
+const MailIcon = () => (
+  <svg
+    className="w-5 h-5 mr-3 text-slate-400"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    />
+  </svg>
+);
+const PhoneIcon = () => (
+  <svg
+    className="w-5 h-5 mr-3 text-slate-400"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+    />
+  </svg>
+);
 
+// --- Componente para Redes Sociales ---
+const SocialLink = ({ href, label, children }) => {
   const props = {
     href,
+    target: "_blank",
+    rel: "noopener noreferrer",
     className: "text-slate-400 hover:text-white transition-colors",
   };
-
-  if (isExternalPage) {
-    props.target = "_blank";
-    props.rel = "noopener noreferrer";
-  }
-
   return (
     <a {...props}>
       <span className="sr-only">{label}</span>
@@ -25,75 +72,20 @@ const SocialLink = ({ href, label, children }) => {
 export default function Footer() {
   return (
     <footer className="bg-slate-800 text-slate-300 border-t-4 border-teal-800">
-      <div className="container mx-auto px-4 py-10">
-        {/* Main footer content grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {/* About Section */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">AuditPro</h3>
-            <p className="text-sm">
-              Comprometidos con la excelencia y la integridad en cada auditoría.
-            </p>
+      <div className="container mx-auto px-4 pt-16 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Columna 1: Sobre la Empresa */}
+          <div className="text-center px-4">
             <img
               src="/logo-AuditPro.png"
               alt="Logo AuditPro"
-              className="h-12 mt-4 mx-auto"
+              className="h-14 mb-4 mx-auto brightness-0 invert"
             />
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Navegación
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="hover:text-white hover:underline">
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/nosotros"
-                  className="hover:text-white hover:underline"
-                >
-                  Nosotros
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/servicios"
-                  className="hover:text-white hover:underline"
-                >
-                  Servicios
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/portafolio"
-                  className="hover:text-white hover:underline"
-                >
-                  Portafolio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contacto"
-                  className="hover:text-white hover:underline"
-                >
-                  Contacto
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact & Social */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Ponerse en Contacto
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>123 Calle Ficticia, Ciudad</li>
-              <li>contacto@auditpro.com</li>
-            </ul>
+            <p className="text-sm text-slate-400 max-w-xs mx-auto">
+              Comprometidos con la excelencia y la integridad, brindando certeza
+              y confianza a través de servicios de auditoría y consultoría de
+              primer nivel.
+            </p>
             <div className="flex justify-center space-x-5 mt-6">
               <SocialLink href="https://wa.me/51983885114" label="WhatsApp">
                 <svg
@@ -130,12 +122,146 @@ export default function Footer() {
               </SocialLink>
             </div>
           </div>
+
+          {/* Columna 2: Navegación */}
+          <div className="text-center px-4">
+            <h3 className="text-lg font-semibold text-white mb-4">
+              Navegación
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  to="/"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/nosotros"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Nosotros
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/servicios"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Servicios
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/portafolio"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Portafolio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contacto"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Contacto
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Columna 3: Servicios */}
+          <div className="text-center px-4">
+            <h3 className="text-lg font-semibold text-white mb-4">
+              Nuestros Servicios
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  to="/servicios"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Auditoría Financiera
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/servicios"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Consultoría Fiscal
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/servicios"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Auditoría Interna
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/servicios"
+                  className="text-slate-400 hover:text-white hover:underline"
+                >
+                  Due Diligence
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Columna 4: Contacto */}
+          <div className="text-center px-4">
+            <h3 className="text-lg font-semibold text-white mb-4">
+              Ponerse en Contacto
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start justify-center">
+                <LocationIcon />
+                <span>
+                  123 Calle Ficticia, <br />
+                  Ciudad, País
+                </span>
+              </li>
+              <li className="flex items-center justify-center">
+                <MailIcon />
+                <a className="text-slate-400 hover:text-white">
+                  contacto@auditpro.com
+                </a>
+              </li>
+              <li className="flex items-center justify-center">
+                <PhoneIcon />
+                <a className="text-slate-400 hover:text-white">
+                  +51 983 885 114
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="mt-10 pt-8 border-t border-slate-700 text-center">
-          <p className="text-sm text-slate-400">
+
+        {/* Barra Inferior */}
+        <div className="mt-12 pt-8 border-t border-slate-700 flex flex-col sm:flex-row justify-between items-center text-sm">
+          <p className="text-slate-400 mb-4 sm:mb-0">
             &copy; {new Date().getFullYear()} AuditPro. Todos los derechos
             reservados.
           </p>
+          <div className="flex space-x-4">
+            <Link
+              // to="/politica-privacidad"
+              className="text-slate-400 hover:text-white"
+            >
+              Política de Privacidad
+            </Link>
+            <Link
+              // to="/terminos-servicio"
+              className="text-slate-400 hover:text-white"
+            >
+              Términos de Servicio
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

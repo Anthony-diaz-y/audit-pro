@@ -35,7 +35,7 @@ export default function Footer() {
               Comprometidos con la excelencia y la integridad en cada auditoría.
             </p>
             <img
-              src="/public/logo-AuditPro.png"
+              src="/logo-AuditPro.png"
               alt="Logo AuditPro"
               className="h-12 mt-4 mx-auto"
             />

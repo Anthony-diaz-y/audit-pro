@@ -6,6 +6,7 @@ import Nosotros from "./components/pages/Nosotros";
 import Servicios from "./components/pages/Servicios";
 import Portafolio from "./components/pages/Portafolio";
 import Contacto from "./components/pages/Contacto";
+import WhatsAppButton from "./components/ui/whatssapButton";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/portafolio" element={<Portafolio />} />
           <Route path="/contacto" element={<Contacto />} />
         </Routes>
+        <WhatsAppButton />
       </main>
       <Footer />
     </div>

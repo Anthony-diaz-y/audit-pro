@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import { useEffect } from "react";
+import Aos from "aos";
 
 // --- Componentes de Iconos ---
 const ShieldIcon = () => (
@@ -61,6 +63,16 @@ const heroImages = [
 
 // --- Componente Principal ---
 export default function Home() {
+  {
+    /*Inicializar AOS*/
+  }
+  useEffect(() => {
+    Aos.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
+
   return (
     <>
       {/* --- VISTA DE ESCRITORIO (Desktop) --- */}
@@ -166,7 +178,7 @@ export default function Home() {
       {/* --- Secciones restantes (comunes para ambas vistas) --- */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
               Nuestra Promesa
             </h2>
@@ -175,7 +187,11 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div className="flex flex-col items-center">
+            <div
+              className="flex flex-col items-center"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <ShieldIcon />
               <h3 className="text-xl font-bold text-gray-800 mt-4 mb-2">
                 Integridad Absoluta
@@ -185,7 +201,11 @@ export default function Home() {
                 transparencia y honestidad en cada proceso.
               </p>
             </div>
-            <div className="flex flex-col items-center">
+            <div
+              className="flex flex-col items-center"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <ChartBarIcon />
               <h3 className="text-xl font-bold text-gray-800 mt-4 mb-2">
                 Experiencia Comprobada
@@ -195,7 +215,11 @@ export default function Home() {
                 una vasta experiencia en el sector.
               </p>
             </div>
-            <div className="flex flex-col items-center">
+            <div
+              className="flex flex-col items-center"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <HandshakeIcon />
               <h3 className="text-xl font-bold text-gray-800 mt-4 mb-2">
                 Confianza y Compromiso
@@ -210,15 +234,21 @@ export default function Home() {
       </section>
       <section className="bg-gray-50 py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Servicios a su Medida
-          </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-12">
-            Ofrecemos una gama completa de servicios para fortalecer la salud
-            financiera y operativa de su empresa.
-          </p>
+          <div className="text-center mb-12" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Servicios a su Medida
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto mb-12">
+              Ofrecemos una gama completa de servicios para fortalecer la salud
+              financiera y operativa de su empresa.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div
+              className="bg-white p-8 rounded-lg shadow-md"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <h3 className="text-xl font-bold text-gray-800 mb-2">
                 Auditoría Financiera
               </h3>
@@ -233,7 +263,11 @@ export default function Home() {
                 Leer más &rarr;
               </Link>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div
+              className="bg-white p-8 rounded-lg shadow-md"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <h3 className="text-xl font-bold text-gray-800 mb-2">
                 Consultoría Fiscal
               </h3>
@@ -248,7 +282,11 @@ export default function Home() {
                 Leer más &rarr;
               </Link>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div
+              className="bg-white p-8 rounded-lg shadow-md"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <h3 className="text-xl font-bold text-gray-800 mb-2">
                 Auditoría Interna
               </h3>

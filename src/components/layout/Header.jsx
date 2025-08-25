@@ -44,7 +44,7 @@ export default function Header() {
         <div className="flex items-center">
           <Link to="/">
             <img
-              src="/img/logo-AuditPro.png"
+              src="/public/logo-AuditPro.png"
               alt="Logo AuditPro"
               className={`h-16 transition-all duration-300 ${
                 isScrolled ? "" : "brightness-0 invert"
